@@ -1,0 +1,366 @@
+"下列插件需要在IDEA中下载
+"ideaVim
+"IdeaVim-EasyMotion
+"IdeaVimExtension
+"IdeaVimMultiCursor
+"which-key
+"Translation
+"PrivateNotes
+"TabMover
+Plug 'nerdtree'
+Plug 'easymotion/vim-easymotion'
+
+":NERDTree
+":NERDTreeFocus
+":NERDTreeToggle
+":NERDTreeClose
+":NERDTreeFind
+":NERDTreeRefreshRoot
+"NERDTree options: https://github.com/JetBrains/ideavim/wiki/NERDTree-support
+"o	Open files, directories and bookmarks	                    g:NERDTreeMapActivateNode
+"go	Open selected file, but leave cursor in the NERDTree	    g:NERDTreeMapPreview
+"t	Open selected node/bookmark in a new tab	                g:NERDTreeMapOpenInTab
+"T	Same as 't' but keep the focus on the current tab	        g:NERDTreeMapOpenInTabSilent
+"i	Open selected file in a split window	                    g:NERDTreeMapOpenSplit
+"gi	Same as i, but leave the cursor on the NERDTree	            g:NERDTreeMapPreviewSplit
+"s	Open selected file in a new vsplit	                        g:NERDTreeMapOpenVSplit
+"gs	Same as s, but leave the cursor on the NERDTree	            g:NERDTreeMapPreviewVSplit
+"O	Recursively open the selected directory	                    g:NERDTreeMapOpenRecursively
+"x	Close the current nodes parent	                            g:NERDTreeMapCloseDir
+"X	Recursively close all children of the current node	        g:NERDTreeMapCloseChildren
+"P	Jump to the root node	                                    g:NERDTreeMapJumpRoot
+"p	Jump to current nodes parent	                            g:NERDTreeMapJumpParent
+"K	Jump up inside directories at the current tree depth	    g:NERDTreeMapJumpFirstChild
+"J	Jump down inside directories at the current tree depth	    g:NERDTreeMapJumpLastChild
+"<C-J>	Jump down to next sibling of the current directory	    g:NERDTreeMapJumpNextSibling
+"<C-K>	Jump up to previous sibling of the current directory	g:NERDTreeMapJumpPrevSibling
+"r	Recursively refresh the current directory	                g:NERDTreeMapRefresh
+"R	Recursively refresh the current root	                    g:NERDTreeMapRefreshRoot
+"m	Display the NERDTree menu	                                g:NERDTreeMapMenu
+"q	Close the NERDTree window	                                g:NERDTreeMapQuit
+"A	Zoom (maximize/minimize) the NERDTree window	            g:NERDTreeMapToggleZoom
+"d	Delete file or directory	                                g:NERDTreeMapDelete
+"n	Create File	                                                g:NERDTreeMapNewFile
+"N	Create Directory	                                        g:NERDTreeMapNewDir
+
+"============================== settings =======================================================
+"set multicursor
+set easymotion
+set scrolloff=15
+set incsearch
+set ignorecase
+set hlsearch
+set number 
+set keep-english-in-normal
+set surround
+set which-key
+set notimeout
+set ideajoin=true
+set clipboard=unnamed
+set clipboard+=ideaput
+
+"============================== no leader keymap ===============================================
+nmap <CR> o<Esc>
+nmap <S-Enter> O<Esc>
+nnoremap <C-j> :m +1<CR>
+nnoremap <C-k> :m -2<CR>
+inoremap <C-j> <Esc> :m +1<CR>gi
+inoremap <C-k> <Esc> :m -2<CR>gi
+xnoremap <C-j> :m '>+1<cr>gv=gv
+xnoremap <C-k> :m '<-2<cr>gv=gv
+nnoremap <C-f> :+10<CR>
+nnoremap <C-b> :-10<CR>
+imap <C-t> <Action>(Markdown.InsertEmptyTable)
+nnoremap ga :<C-u>action GotoAction<CR>
+nnoremap gb :<C-u>action JumpToLastChange<CR>
+nnoremap gc :<C-u>action GotoClass<CR>
+nnoremap gd :<C-u>action GotoDeclaration<CR>
+nnoremap ge :<C-u>action GotoNextError<CR>
+nnoremap gs :<C-u>action GotoSuperMethod<CR>
+nnoremap gi :<C-u>action GotoImplementation<CR>
+nnoremap gf :<C-u>action GotoFile<CR>
+nnoremap gm :<C-u>action GotoSymbol<CR>
+nnoremap gu :<C-u>action ShowUsages<CR>
+nnoremap gt :<C-u>action GotoTest<CR>
+nnoremap gp :<C-u>action FindInPath<CR>
+nnoremap gr :<C-u>action RecentFiles<CR>
+nnoremap gh :<C-u>action Back<CR>
+nnoremap gl :<C-u>action Forward<CR>
+"nnoremap gw :<C-u>action ShowErrorDescription<CR>
+nnoremap gw :<C-u>action ShowHoverInfo<CR>
+
+
+nmap <C-S> <action>(SaveAll)
+imap <C-S> <Esc><action>(SaveAll)
+
+nmap K <action>(QuickImplementations)
+nmap L <action>(NextTab)
+nmap <a-L> <action>(com.mnw.tabmover.actions.MoveTabDownAction)
+nmap <a-J> <action>(com.mnw.tabmover.actions.MoveTabToNextWindow)
+nmap <a-K> <action>(com.mnw.tabmover.actions.MoveTabToPreviousWindow)
+nmap <a-L> <action>(com.mnw.tabmover.actions.MoveTabDownAction)
+nmap <a-H> <action>(com.mnw.tabmover.actions.MoveTabUpAction)
+nmap <a-s-H> <action>(com.mnw.tabmover.actions.MoveTabToFirstAction)
+nmap <a-s-L> <action>(com.mnw.tabmover.actions.MoveTabToLastAction)
+nmap <a-s-J> <action>(com.mnw.tabmover.actions.MoveTabToNewWindow)
+nmap H <action>(PreviousTab)
+
+nmap Q <action>(CloseEditor)
+
+nmap ma <action>(ToggleBookmark)
+nmap mu <action>(MethodUp)
+nnoremap ms :<C-u>action EditorCodeBlockStart<CR>
+nnoremap me :<C-u>action EditorCodeBlockEnd<CR>
+nnoremap mx :<C-u>action MaximizeEditorInSplit<CR>
+nnoremap mn :call JumpToFunction(v:true)<CR>
+nnoremap mp :call JumpToFunction(v:false)<CR>
+
+nmap <leader>h <action>(PrevSplitter)
+nmap <leader>l <action>(NextSplitter)
+
+nnoremap '' :<C-u>action Back<CR>
+nnoremap 'w :call NextWord()<CR>
+nnoremap 'b :call PrevWord()<CR>
+
+function! JumpToFunction(isDown)
+    if isDown
+        execute '/^function'
+    else
+        execute '?^function'
+    endif
+    normal! n
+    set nohlsearch
+endfunction
+
+function! NextWord()
+    execute '/\u'
+    set nohlsearch
+endfunction
+
+function! PrevWord()
+    execute '?\u'
+    set nohlsearch
+endfunction
+endfunction
+
+imap jj <Esc>
+imap jk <Esc>
+
+"================================ leader keymap =================================================
+let mapleader = ";"
+nnoremap <leader>fs :<C-u>action FileStructurePopup<CR>
+nmap <leader>o  <action>(GotoFile)
+
+nmap <leader>bl <action>(GotoNextBookmark)
+nmap <leader>bh <action>(GotoPreviousBookmark)
+nmap <leader>bn <action>(GotoNextBookmarkInEditor)
+nmap <leader>bp <action>(GotoPreviousBookmarkInEditor)
+nmap <leader>bs <action>(ShowBookmarks)
+nmap <leader>be <action>(EditBookmark)
+nmap <leader>ca <action>(CloseAllEditors)
+nmap <leader>cd :action CloseEditor<CR>
+nmap <leader>cc <action>(CodeCompletion)
+nmap <leader>co :action CloseAllEditorsButActive<CR>
+nmap <leader>dp <Action>(ToggleLineBreakpoint)
+nmap <leader>db <Action>(Debug)
+vmap <leader>dd "+d
+nmap <leader>e <action>(ActivateProjectToolWindow)
+nmap <leader>ff <action>(GotoFile)
+nmap <leader>fl <action>(SelectInProjectView)
+nmap <leader>ft <action>(FindInPath)
+nmap <leader>fc <action>(GotoAction)
+nmap <leader>fm <action>(ReformatCode) \| <action>(OptimizeImports)
+nmap <leader>gd <action>(Vcs.ShowTabbedFileHistory)
+nmap <leader>gs <action>(VcsShowCurrentChangeMarker)
+nmap <leader>gn <action>(VcsShowNextChangeMarker)
+nmap <leader>gp <action>(VcsShowPrevChangeMarker)
+nmap <leader>grh <action>(ChangesView.Revert)
+nmap <leader>grl <action>(Vcs.RollbackChangedLines)
+nmap <leader>gb <action>(Vcs.ShowHistoryForBlock)
+vmap <leader>gb <action>(Vcs.ShowHistoryForBlock)
+nmap <leader>gc <action>(Compare.SameVersion)
+nmap <leader>i f(a
+nmap <leader>j <c-w>j
+nmap <leader>k <c-w>k
+nmap <leader>me <action>(TextEditorWithPreview.Layout.EditorOnly)
+nmap <leader>mp <action>(TextEditorWithPreview.Layout.PreviewOnly)
+nmap <leader>mb <action>(TextEditorWithPreview.Layout.EditorAndPreview)
+nmap <leader>nl :nohlsearch<CR>
+nmap <leader>ner :NERDTree<CR>
+" 需要PrivateNotes插件
+nmap <leader>na <action>(Private.Notes.add)
+nmap <leader>nd <action>(Private.Notes.Del)
+nmap <leader>ns <action>(Private.Notes.Detailed)
+nmap <leader>nw <action>(Private.Notes.Wrap)
+nmap <leader>no <action>(Private.Notes.Menu.OtherOperate)
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
+nmap <leader>rc :action RunClass<CR>
+nmap <leader>rr <action>(Rerun)
+nmap <leader>rt <action>(RerunTests)
+map <leader>rn <action>(RenameElement)
+map <leader>ru <action>(Run)
+nmap <leader>ro <action>(ReopenClosedTab)
+nmap <leader>ss <action>(FileStructurePopup)
+nmap <leader>sb <action>(ShowBookmarks)
+nmap <leader>sp <action>(ParameterInfo)
+nmap <leader>st <action>(Stop)
+nmap <leader>tw <action>(Translation.EditorTranslateAction)
+vmap <leader>tw <action>(Translation.EditorTranslateAction)
+nmap <leader>tt <action>(Translation.TranslateTextComponentAction)
+vmap <leader>tt <action>(Translation.TranslateTextComponentAction)
+nmap <leader>to <action>(Translation.ShowTranslationDialogAction)
+"nmap <leader>tq <action>(Translation.TranslateQuickDocAction)
+"nmap <leader>td <action>(Translation.TranslateRenderedDocSelectionAction)
+"nmap <leader>wml <action>(MoveTabRight)
+"nmap <leader>wmd <action>(MoveTabDown)
+"nmap <leader>wmo <action>(MoveEditorToOppositeTabGroup)
+"nmap <leader>wmc <action>(SplitVertically)
+"nmap <leader>wa <action>(UnsplitAll)
+"nmap <leader>wc <c-w>c
+"nmap <leader>wu <action>(Unsplit)
+nmap <leader>ww <action>(HideAllWindows)
+vmap <leader>y "+y
+nmap <leader>y "+yy
+nmap <leader>zo <action>(ExpandAllRegions)
+nmap <leader>zc <action>(CollapseAllRegions)
+nmap <space><space> <Esc>
+nmap <leader><leader>w <action>(AceWordAction)
+nmap <leader><leader>e <action>(AceWordEndAction)
+nmap <leader><leader>b <action>(AceWordBackwardsAction)
+nmap <leader><leader>j <action>(AceLineAction)
+nmap <leader><leader>f <action>(AceAction)
+
+"============================== which-key keymap ================================================
+let g:WhichKeyDesc_LeaderKeymap= "<leader> 🌟🌟🌟紫色为二级目录🌟🌟🌟"
+
+let g:WhichKeyDesc_bookmark = "ma 书签"
+let g:WhichKeyDesc_GotoAction = "ga 跳转到操作"
+let g:WhichKeyDesc_JumpToLastChange = " gb 跳转到上一次修改的地方"
+let g:WhichKeyDesc_GotoClass = "gc 跳转到类 "
+let g:WhichKeyDesc_GotoNextError = "ge 跳转到下一个错误"
+let g:WhichKeyDesc_GotoDeclaration = "gd 跳转到声明"
+let g:WhichKeyDesc_GotoSuperMethod = "gs 跳转到父类方法"
+let g:WhichKeyDesc_GotoImplementation = "gi 跳转到继承类"
+let g:WhichKeyDesc_GotoFile = "gf 跳转文件"
+let g:WhichKeyDesc_GotoSymbol = "gm 跳转到标志"
+let g:WhichKeyDesc_ShowUsages = "gu 显示用法"
+let g:WhichKeyDesc_ShowErrorDescription = "gw 显示悬浮时信息"
+let g:WhichKeyDesc_GotoTest = "gt 跳转到测试代码"
+let g:WhichKeyDesc_FindInPath = "gp 在路径中查找"
+let g:WhichKeyDesc_RecentFiles = "gr 最近打开的文件"
+let g:WhichKeyDesc_Back = "gh back"
+let g:WhichKeyDesc_Forward = "gl front"
+
+let g:WhichKeyDesc_MethodUp = "mu 到上一个方法"
+let g:WhichKeyDesc_MoveToBlockStart = "ms 移动到代码块开始"
+let g:WhichKeyDesc_MoveToBlockEnd = "me 移动到代码块结束"
+
+
+let g:WhichKeyDesc_bookmark_edit = "<leader>be 编辑当前书签"
+let g:WhichKeyDesc_bookmark_prev = "<leader>bh 前一个书签"
+let g:WhichKeyDesc_bookmark_next = "<leader>bl 下一个书签"
+let g:WhichKeyDesc_bookmark_nextInEditor = "<leader>bn 当前窗口的下一个书签"
+let g:WhichKeyDesc_bookmark_prevInEditor = "<leader>bp 当前窗口的前一个书签"
+let g:WhichKeyDesc_bookmark_show = "<leader>bs 显示书签"
+let g:WhichKeyDesc_CodeAndClose = "<leader>c Code&关闭"
+let g:WhichKeyDesc_CodeAndClose_CloseAllEditors = "<leader>ca 关闭所有标签页"
+let g:WhichKeyDesc_CodeAndClose_CloseEditor = "<leader>cd 关闭当前标签页"
+let g:WhichKeyDesc_CodeAndClose_CodeCompletion = "<leader>cc 代码自动补全"
+let g:WhichKeyDesc_CodeAndClose_CloseAllEditorsButActive = "<leader>co 关闭其他标签页"
+
+let g:WhichKeyDesc_DeBugOrDelete= "<leader>d 调试&删除"
+let g:WhichKeyDesc_DebugOrDelete_BreakPoint = "<leader>dp 打断点/解除断点 "
+let g:WhichKeyDesc_DebugOrDelete_DeBug = "<leader>db 调试"
+let g:WhichKeyDesc_DebugOrDelete_DeleteAndCopyToClipboard = "<leader>dd 删除并复制到剪切板"
+
+let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>e 打开文件列表"
+
+let g:WhichKeyDesc_FindOrFormat = "<leader>f 查找&格式化"
+let g:WhichKeyDesc_FindOrFormat_FindFile = "<leader>ff 查找文件"
+let g:WhichKeyDesc_FindOrFormat_FindFileLocation = "<leader>fl 定位文件位置"
+let g:WhichKeyDesc_FindOrFormat_FindText = "<leader>ft 查找字符"
+let g:WhichKeyDesc_FindOrFormat_Commands = "<leader>fc 打开查找菜单"
+let g:WhichKeyDesc_FindOrFormat_Format = "<leader>fm 格式化代码"
+
+let g:WhichKeyDesc_GitOrGenerate = "<leader>g Git"
+let g:WhichKeyDesc_Git_Rollback = "<leader>gr git回滚"
+let g:WhichKeyDesc_Git_RollbackHunk = "<leader>grh git回滚块"
+let g:WhichKeyDesc_Git_RollbackLines = "<leader>grl git回滚行"
+let g:WhichKeyDesc_Git_GitCompare = "<leader>gc git 对比当前改动"
+let g:WhichKeyDesc_Git_GitShowBlockHistory = "<leader>gb 显示选区版本控制历史"
+let g:WhichKeyDesc_Git_GenerateSetter = "<leader>gs 显示当前行的修改"
+let g:WhichKeyDesc_Git_ShowTabbedFileHistory = "<leader>gd 显示文件的版本控制历史"
+let g:WhichKeyDesc_Git_GotoPrevChangeMarker = "<leader>gp 前往上一个修改的地方"
+let g:WhichKeyDesc_Git_GotoNextChangeMarker = "<leader>gn 前往下一个修改的地方"
+
+let g:WhichKeyDesc_Show_MoveToLeft = "<leader>h 向左跳转"
+
+let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i 跳转到选一个("
+
+let g:WhichKeyDesc_Show_MoveToDown = "<leader>j 向下跳转"
+
+let g:WhichKeyDesc_Show_MoveToUp = "<leader>k 向上跳转"
+
+let g:WhichKeyDesc_Show_MoveToRight = "<leader>l 向右跳转"
+
+let g:WhichKeyDesc_Markdown = "<leader>m Markdown"
+let g:WhichKeyDesc_Markdown_PreviewOnly = "<leader>mp 仅预览"
+let g:WhichKeyDesc_Markdown_EditorOnly = "<leader>me 仅编辑器"
+let g:WhichKeyDesc_Markdown_Both = "<leader>mb 编辑器和预览"
+
+let g:WhichKeyDesc_NERDTreeOrNote = "<leader>n 目录树&私人注释"
+let g:WhichKeyDesc_NERDTreeOrNote_Highlight = "<leader>nl 取消搜索高亮"
+let g:WhichKeyDesc_NERDTreeOrNote_NoteDelete = "<leader>nd 删除注释"
+let g:WhichKeyDesc_NERDTreeOrNote_NoteAdd = "<leader>na 新建注释"
+let g:WhichKeyDesc_NERDTreeOrNote_NoteShow = "<leader>ns 展示注释细节"
+let g:WhichKeyDesc_NERDTreeOrNote_NoteWrap = "<leader>nw 注释换行"
+let g:WhichKeyDesc_NERDTreeOrNote_NoteMenuOperate = "<leader>no 注释面板"
+
+let g:WhichKeyDesc_OpenFile = "<leader>o 打开文件"
+
+let g:WhichKeyDesc_PasteClipboardDown = "<leader>p 从剪切板粘贴到下面行"
+let g:WhichKeyDesc_PasteClipboardUp = "<leader>P 从剪切板粘贴到上面行"
+let g:WhichKeyDesc_PasteClipboardUp = "<leader>P 从剪切板粘贴到上面行"
+
+let g:WhichKeyDesc_RunOrRe = "<leader>r 运行&重新"
+let g:WhichKeyDesc_RunOrRe_RunClass = "<leader>rc 运行当前文件"
+let g:WhichKeyDesc_RunOrRe_ReRun = "<leader>rr 重新运行"
+let g:WhichKeyDesc_RunOrRe_ReRunTests = "<leader>rt 重新运行Test"
+let g:WhichKeyDesc_RunOrRe_Rename = "<leader>rn 重构"
+let g:WhichKeyDesc_RunOrRe_Run = "<leader>ru 运行"
+
+let g:WhichKeyDesc_Show = "<leader>s 显示&停止"
+let g:WhichKeyDesc_Show_FileStructure = "<leader>ss 显示文件结构"
+let g:WhichKeyDesc_Show_Bookmarks = "<leader>sb 显示书签工具窗口"
+let g:WhichKeyDesc_Show_ParameterInfo = "<leader>sp 显示方法或函数的参数信息"
+let g:WhichKeyDesc_Show_Stop = "<leader>st 停止运行"
+
+let g:WhichKeyDesc_Translate = "<leader>t 翻译"
+let g:WhichKeyDesc_Translate_word = "<leader>tw 直接翻译"
+let g:WhichKeyDesc_Translate_window = "<leader>tt 窗口翻译"
+let g:WhichKeyDesc_Translate_showWindow = "<leader>to 打开翻译窗口"
+
+let g:WhichKeyDesc_Windows = "<leader>w 窗口"
+let g:WhichKeyDesc_Windows_Move = "<leader>wm 移动窗口"
+let g:WhichKeyDesc_Windows_Move_MoveTabRight = "<leader>wml 向右拆分标签页"
+let g:WhichKeyDesc_Windows_Move_MoveTabDown = "<leader>wmd 向下拆分标签页"
+let g:WhichKeyDesc_Windows_Move_MoveEditorToOppositeTabGroup = "<leader>wmo 在另一边打开"
+let g:WhichKeyDesc_Windows_Move_SplitVertically = "<leader>wmc 向右复制标签页"
+
+let g:WhichKeyDesc_Windows_UnsplitAll = "<leader>wa 取消所有分割窗口"
+let g:WhichKeyDesc_Windows_closeActiveWindow = "<leader>wc 关闭当前分割窗口"
+let g:WhichKeyDesc_Windows_Unsplit = "<leader>wu 取消拆分当前分割窗口"
+let g:WhichKeyDesc_Windows_Hide_HideActiveWindow = "<leader>ww 隐藏/显示活动窗口"
+
+let g:WhichKeyDesc_CopyClipboard = "<leader>y 复制到剪切板"
+let g:WhichKeyDesc_CopyClipboard= "<leader>y 复制到剪切板"
+
+let g:WhichKeyDesc_Zip = "<leader>z 折叠"
+let g:WhichKeyDesc_Zip_unZipAll = "<leader>zo 展开所有折叠"
+let g:WhichKeyDesc_Zip_ZipAll = "<leader>zc 折叠所有代码"
+
+let g:WhichKeyDesc_easymotionkey = "<leader><leader> 快速跳转插件"
+let g:WhichKeyDesc_easymotion = "s 快速跳转"
