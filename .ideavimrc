@@ -55,7 +55,7 @@ set keep-english-in-normal
 set surround
 set which-key
 set notimeout
-set ideajoin=true
+set ideajoin
 set clipboard=unnamed
 set clipboard+=ideaput
 
