@@ -9,6 +9,7 @@
 "TabMover
 Plug 'nerdtree'
 Plug 'easymotion/vim-easymotion'
+Plug 'vim-indent-object'
 
 ":NERDTree
 ":NERDTreeFocus
@@ -58,10 +59,13 @@ set notimeout
 set ideajoin
 set clipboard=unnamed
 set clipboard+=ideaput
+set ideamarks
+set textobj-indent
 
 "============================== no leader keymap ===============================================
-nmap <CR> o<Esc>
-nmap <S-Enter> O<Esc>
+nmap <CR> VaI
+nmap <S-Enter> Vii
+vmap <CR> aI
 nnoremap <C-j> :m +1<CR>
 nnoremap <C-k> :m -2<CR>
 inoremap <C-j> <Esc> :m +1<CR>gi
