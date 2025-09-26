@@ -83,7 +83,6 @@ nmap <a-s-J> <action>(com.mnw.tabmover.actions.MoveTabToNewWindow)
 
 nmap Q <action>(CloseEditor)
 
-"nmap ma <action>(ToggleBookmark)
 nmap mu <action>(MethodUp)
 
 nnoremap fa f,w
@@ -132,6 +131,7 @@ nnoremap <leader>j <c-w>j
 nnoremap <leader>k <c-w>k
 nmap <leader>h <action>(PrevSplitter)
 nmap <leader>l <action>(NextSplitter)
+nmap <leader>ma <action>(ToggleBookmark)
 nmap <leader>me <action>(TextEditorWithPreview.Layout.EditorOnly)
 nmap <leader>mp <action>(TextEditorWithPreview.Layout.PreviewOnly)
 nmap <leader>mb <action>(TextEditorWithPreview.Layout.EditorAndPreview)
