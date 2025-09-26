@@ -7,32 +7,33 @@
 "Translation
 "PrivateNotes
 "TabMover
-Plug 'nerdtree'
-Plug 'easymotion/vim-easymotion'
-Plug 'vim-indent-object'
-Plug 'vim-scripts/argtextobj.vim'
-
-"============================== settings =======================================================
-"set multicursor
+"============================== Plugins =========================================================
 set multiple-cursors
+"set multicursor
+set nerdtree
 set argtextobj
 set easymotion
+set textobj-indent
+set surround
+"============================== Plugins settings ===============================================
+let g:argtextobj_pairs="[:],(:),<:>"
+let b:match_words = 
+let b:match_ignorecase = 1
+
+"============================== settings =======================================================
 set scrolloff=15
 set incsearch
 set ignorecase
 set hlsearch
 set number 
 set keep-english-in-normal
-set surround
 set which-key
 set notimeout
 set ideajoin
 set clipboard=unnamed
 set clipboard+=ideaput
 set ideamarks
-set textobj-indent
 
-let g:argtextobj_pairs="[:],(:),<:>"
 "============================== no leader keymap ===============================================
 nmap <CR> VaI
 nmap <S-Enter> Vii
@@ -68,6 +69,8 @@ nnoremap gw :<C-u>action ShowHoverInfo<CR>
 map <C-n> <Plug>NextWholeOccurrence
 nmap <C-S> <action>(SaveAll)
 imap <C-S> <Esc><action>(SaveAll)
+nmap % <action>(EditorMatchBrace)
+vmap % <action>(EditorMatchBrace)
 
 nmap K <action>(QuickImplementations)
 nmap H <action>(PreviousTab)
