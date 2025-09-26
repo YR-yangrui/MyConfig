@@ -13,7 +13,7 @@ Plug 'vim-indent-object'
 Plug 'vim-scripts/argtextobj.vim'
 
 "============================== settings =======================================================
-set multicursor
+"set multicursor
 set multiple-cursors
 set argtextobj
 set easymotion
@@ -63,7 +63,6 @@ nnoremap gp :<C-u>action FindInPath<CR>
 nnoremap gr :<C-u>action RecentFiles<CR>
 nnoremap gh :<C-u>action Back<CR>
 nnoremap gl :<C-u>action Forward<CR>
-"nnoremap gw :<C-u>action ShowErrorDescription<CR>
 nnoremap gw :<C-u>action ShowHoverInfo<CR>
 
 map <C-n> <Plug>NextWholeOccurrence
@@ -71,6 +70,7 @@ nmap <C-S> <action>(SaveAll)
 imap <C-S> <Esc><action>(SaveAll)
 
 nmap K <action>(QuickImplementations)
+nmap H <action>(PreviousTab)
 nmap L <action>(NextTab)
 nmap <a-L> <action>(com.mnw.tabmover.actions.MoveTabDownAction)
 nmap <a-J> <action>(com.mnw.tabmover.actions.MoveTabToNextWindow)
@@ -80,15 +80,11 @@ nmap <a-H> <action>(com.mnw.tabmover.actions.MoveTabUpAction)
 nmap <a-s-H> <action>(com.mnw.tabmover.actions.MoveTabToFirstAction)
 nmap <a-s-L> <action>(com.mnw.tabmover.actions.MoveTabToLastAction)
 nmap <a-s-J> <action>(com.mnw.tabmover.actions.MoveTabToNewWindow)
-nmap H <action>(PreviousTab)
 
 nmap Q <action>(CloseEditor)
 
-nmap ma <action>(ToggleBookmark)
+"nmap ma <action>(ToggleBookmark)
 nmap mu <action>(MethodUp)
-nnoremap ms :<C-u>action EditorCodeBlockStart<CR>
-nnoremap me :<C-u>action EditorCodeBlockEnd<CR>
-nnoremap mx :<C-u>action MaximizeEditorInSplit<CR>
 
 nnoremap fa f,w
 nnoremap fA F,b
@@ -139,6 +135,9 @@ nmap <leader>l <action>(NextSplitter)
 nmap <leader>me <action>(TextEditorWithPreview.Layout.EditorOnly)
 nmap <leader>mp <action>(TextEditorWithPreview.Layout.PreviewOnly)
 nmap <leader>mb <action>(TextEditorWithPreview.Layout.EditorAndPreview)
+nnoremap <leader>ms :<C-u>action EditorCodeBlockStart<CR>
+nnoremap <leader>me :<C-u>action EditorCodeBlockEnd<CR>
+nnoremap <leader>mx :<C-u>action MaximizeEditorInSplit<CR>
 nmap <leader>nl :nohlsearch<CR>
 nmap <leader>ner :NERDTree<CR>
 " 需要PrivateNotes插件
@@ -209,8 +208,9 @@ let g:WhichKeyDesc_Back = "gh back"
 let g:WhichKeyDesc_Forward = "gl front"
 
 let g:WhichKeyDesc_MethodUp = "mu 到上一个方法"
-let g:WhichKeyDesc_MoveToBlockStart = "ms 移动到代码块开始"
-let g:WhichKeyDesc_MoveToBlockEnd = "me 移动到代码块结束"
+let g:WhichKeyDesc_MoveToBlockStart = "<leader>ms 移动到代码块开始"
+let g:WhichKeyDesc_MoveToBlockEnd = "<leader>me 移动到代码块结束"
+let g:WhichKeyDesc_MaximizeEditorInSplit = "<leader>mx 最大化当前窗口"
 
 
 let g:WhichKeyDesc_bookmark_edit = "<leader>be 编辑当前书签"
