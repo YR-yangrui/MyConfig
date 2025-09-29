@@ -84,11 +84,7 @@ nmap <a-s-L> <action>(com.mnw.tabmover.actions.MoveTabToLastAction)
 nmap <a-s-J> <action>(com.mnw.tabmover.actions.MoveTabToNewWindow)
 nmap <a-n> <action>(VcsShowNextChangeMarker)
 nmap <a-p> <action>(VcsShowPrevChangeMarker)
-
 nmap Q <action>(CloseEditor)
-
-nmap mu <action>(MethodUp)
-
 nnoremap fa f,w
 nnoremap fA F,b
 
@@ -114,8 +110,8 @@ nmap <leader>cc <action>(CodeCompletion)
 nmap <leader>co :action CloseAllEditorsButActive<CR>
 nmap <leader>dp <Action>(ToggleLineBreakpoint)
 nmap <leader>db <Action>(Debug)
+nmap <leader>dr <Action>(RiderRemoveAllLineBreakpoints)
 vmap <leader>dd "+d
-nmap <leader>e <action>(ActivateProjectToolWindow)
 nmap <leader>ff <action>(GotoFile)
 nmap <leader>fl <action>(SelectInProjectView)
 nmap <leader>ft <action>(FindInPath)
@@ -130,7 +126,6 @@ nmap <leader>grl <action>(Vcs.RollbackChangedLines)
 nmap <leader>gb <action>(Vcs.ShowHistoryForBlock)
 vmap <leader>gb <action>(Vcs.ShowHistoryForBlock)
 nmap <leader>gc <action>(Compare.SameVersion)
-nmap <leader>i f(a
 nnoremap <leader>j <c-w>j
 nnoremap <leader>k <c-w>k
 nmap <leader>h <action>(PrevSplitter)
@@ -143,7 +138,6 @@ nnoremap <leader>ms :<C-u>action EditorCodeBlockStart<CR>
 nnoremap <leader>me :<C-u>action EditorCodeBlockEnd<CR>
 nnoremap <leader>mx :<C-u>action MaximizeEditorInSplit<CR>
 nmap <leader>nl :nohlsearch<CR>
-nmap <leader>ner :NERDTree<CR>
 " 需要PrivateNotes插件
 nmap <leader>na <action>(Private.Notes.add)
 nmap <leader>nd <action>(Private.Notes.Del)
@@ -169,8 +163,6 @@ vmap <leader>tw <action>(Translation.EditorTranslateAction)
 nmap <leader>tt <action>(Translation.TranslateTextComponentAction)
 vmap <leader>tt <action>(Translation.TranslateTextComponentAction)
 nmap <leader>to <action>(Translation.ShowTranslationDialogAction)
-"nmap <leader>tq <action>(Translation.TranslateQuickDocAction)
-"nmap <leader>td <action>(Translation.TranslateRenderedDocSelectionAction)
 "nmap <leader>wml <action>(MoveTabRight)
 "nmap <leader>wmd <action>(MoveTabDown)
 "nmap <leader>wmo <action>(MoveEditorToOppositeTabGroup)
@@ -183,7 +175,6 @@ vmap <leader>y "+y
 nmap <leader>y "+yy
 nmap <leader>zo <action>(ExpandAllRegions)
 nmap <leader>zc <action>(CollapseAllRegions)
-nmap <space><space> <Esc>
 nmap <leader><leader>w <action>(AceWordAction)
 nmap <leader><leader>e <action>(AceWordEndAction)
 nmap <leader><leader>b <action>(AceWordBackwardsAction)
@@ -211,12 +202,13 @@ let g:WhichKeyDesc_RecentFiles = "gr 最近打开的文件"
 let g:WhichKeyDesc_Back = "gh back"
 let g:WhichKeyDesc_Forward = "gl front"
 
-let g:WhichKeyDesc_MethodUp = "mu 到上一个方法"
+let g:WhichKeyDesc_MarkToggle = "<leader>ma 打书签"
 let g:WhichKeyDesc_MoveToBlockStart = "<leader>ms 移动到代码块开始"
 let g:WhichKeyDesc_MoveToBlockEnd = "<leader>me 移动到代码块结束"
 let g:WhichKeyDesc_MaximizeEditorInSplit = "<leader>mx 最大化当前窗口"
 
 
+let g:WhichKeyDesc_bookmark_desc = "<leader>b 书签"
 let g:WhichKeyDesc_bookmark_edit = "<leader>be 编辑当前书签"
 let g:WhichKeyDesc_bookmark_prev = "<leader>bh 前一个书签"
 let g:WhichKeyDesc_bookmark_next = "<leader>bl 下一个书签"
@@ -234,9 +226,8 @@ let g:WhichKeyDesc_DebugOrDelete_BreakPoint = "<leader>dp 打断点/解除断点
 let g:WhichKeyDesc_DebugOrDelete_DeBug = "<leader>db 调试"
 let g:WhichKeyDesc_DebugOrDelete_DeleteAndCopyToClipboard = "<leader>dd 删除并复制到剪切板"
 
-let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>e 打开文件列表"
-
 let g:WhichKeyDesc_FindOrFormat = "<leader>f 查找&格式化"
+let g:WhichKeyDesc_FindOrFormat_FileStructurePopup = "<leader>fs 显示文件结构弹窗"
 let g:WhichKeyDesc_FindOrFormat_FindFile = "<leader>ff 查找文件"
 let g:WhichKeyDesc_FindOrFormat_FindFileLocation = "<leader>fl 定位文件位置"
 let g:WhichKeyDesc_FindOrFormat_FindText = "<leader>ft 查找字符"
@@ -255,19 +246,14 @@ let g:WhichKeyDesc_Git_GotoPrevChangeMarker = "<leader>gp 前往上一个修改�
 let g:WhichKeyDesc_Git_GotoNextChangeMarker = "<leader>gn 前往下一个修改的地方"
 
 let g:WhichKeyDesc_Show_MoveToLeft = "<leader>h 向左跳转"
-
-let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i 跳转到选一个("
-
 let g:WhichKeyDesc_Show_MoveToDown = "<leader>j 向下跳转"
-
 let g:WhichKeyDesc_Show_MoveToUp = "<leader>k 向上跳转"
-
 let g:WhichKeyDesc_Show_MoveToRight = "<leader>l 向右跳转"
 
-let g:WhichKeyDesc_Markdown = "<leader>m Markdown"
-let g:WhichKeyDesc_Markdown_PreviewOnly = "<leader>mp 仅预览"
-let g:WhichKeyDesc_Markdown_EditorOnly = "<leader>me 仅编辑器"
-let g:WhichKeyDesc_Markdown_Both = "<leader>mb 编辑器和预览"
+let g:WhichKeyDesc_Markdown = "<leader>m Markdown及其他"
+let g:WhichKeyDesc_Markdown_PreviewOnly = "<leader>mp markdown仅预览"
+let g:WhichKeyDesc_Markdown_EditorOnly = "<leader>me markdown仅编辑器"
+let g:WhichKeyDesc_Markdown_Both = "<leader>mb markdown编辑器和预览"
 
 let g:WhichKeyDesc_NERDTreeOrNote = "<leader>n 目录树&私人注释"
 let g:WhichKeyDesc_NERDTreeOrNote_Highlight = "<leader>nl 取消搜索高亮"
@@ -285,6 +271,7 @@ let g:WhichKeyDesc_PasteClipboardUp = "<leader>P 从剪切板粘贴到上面行"
 
 let g:WhichKeyDesc_RunOrRe = "<leader>r 运行&重新"
 let g:WhichKeyDesc_RunOrRe_RunClass = "<leader>rc 运行当前文件"
+let g:WhichKeyDesc_RunOrRe_Reopen = "<leader>ro 打开刚刚关闭的窗口"
 let g:WhichKeyDesc_RunOrRe_ReRun = "<leader>rr 重新运行"
 let g:WhichKeyDesc_RunOrRe_ReRunTests = "<leader>rt 重新运行Test"
 let g:WhichKeyDesc_RunOrRe_Rename = "<leader>rn 重构"
