@@ -69,7 +69,7 @@ nnoremap gw :<C-u>action ShowHoverInfo<CR>
 map <C-n> <Plug>NextWholeOccurrence
 nmap <C-S> <action>(SaveAll)
 imap <C-S> <Esc><action>(SaveAll)
-nmap % <action>(EditorMatchBrace)
+nmap <a-s-m> <action>(EditorMatchBrace)
 
 nmap K <action>(QuickImplementations)
 nmap H <action>(PreviousTab)
@@ -87,6 +87,11 @@ nmap <a-p> <action>(VcsShowPrevChangeMarker)
 nmap Q <action>(CloseEditor)
 nnoremap fa f,w
 nnoremap fA F,b
+nnoremap fn :action FindWordAtCaret<CR>
+vnoremap fn :action FindWordAtCaret<CR>
+nnoremap fp :action FindPrevWordAtCaret<CR>
+vnoremap fp :action FindPrevWordAtCaret<CR>
+nmap go <action>(RevealIn)
 
 nnoremap '' :<C-u>action Back<CR>
 
