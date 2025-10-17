@@ -66,6 +66,9 @@ nnoremap gh :<C-u>action Back<CR>
 nnoremap gl :<C-u>action Forward<CR>
 nnoremap gw :<C-u>action ShowHoverInfo<CR>
 
+nnoremap <C-]> :<C-u>action EditorCodeBlockEnd<CR>
+nnoremap <C-[> :<C-u>action EditorCodeBlockStart<CR>
+
 map <C-n> <Plug>NextWholeOccurrence
 nmap <C-S> <action>(SaveAll)
 imap <C-S> <Esc><action>(SaveAll)
@@ -139,8 +142,6 @@ nmap <leader>ma <action>(ToggleBookmark)
 nmap <leader>me <action>(TextEditorWithPreview.Layout.EditorOnly)
 nmap <leader>mp <action>(TextEditorWithPreview.Layout.PreviewOnly)
 nmap <leader>mb <action>(TextEditorWithPreview.Layout.EditorAndPreview)
-nnoremap <leader>ms :<C-u>action EditorCodeBlockStart<CR>
-nnoremap <leader>me :<C-u>action EditorCodeBlockEnd<CR>
 nnoremap <leader>mx :<C-u>action MaximizeEditorInSplit<CR>
 nmap <leader>nl :nohlsearch<CR>
 " 需要PrivateNotes插件
@@ -314,3 +315,9 @@ let g:WhichKeyDesc_Zip_ZipAll = "<leader>zc 折叠所有代码"
 
 let g:WhichKeyDesc_easymotionkey = "<leader><leader> 快速跳转插件"
 let g:WhichKeyDesc_easymotion = "s 快速跳转"
+
+let g:WhichKeyDesc_VisualIndentInner = "vii 选中块内部"
+let g:WhichKeyDesc_VisualIndentInnerAndHead = "vai 选中块内部+头"
+let g:WhichKeyDesc_VisualIndentAll = "vaI 选中整个块"
+let g:WhichKeyDesc_VisualIndentArgument = "vaa 选中一个参数全部"
+let g:WhichKeyDesc_VisualIndentArgument = "via 选中一个参数内容"
