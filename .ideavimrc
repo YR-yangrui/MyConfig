@@ -73,6 +73,7 @@ map <C-n> <Plug>NextWholeOccurrence
 nmap <C-S> <action>(SaveAll)
 imap <C-S> <Esc><action>(SaveAll)
 nmap <a-s-m> <action>(EditorMatchBrace)
+nmap <C-S-q> <action>(ToggleRenderedDocPresentation)
 
 nmap K <action>(QuickImplementations)
 nmap H <action>(PreviousTab)
@@ -103,7 +104,6 @@ imap jk <Esc>
 
 "================================ leader keymap =================================================
 let mapleader = ";"
-nnoremap <leader>fs :<C-u>action FileStructurePopup<CR>
 nmap <leader>o  <action>(GotoFile)
 
 nmap <leader>bl <action>(GotoNextBookmark)
@@ -122,6 +122,8 @@ nmap <leader>dr <Action>(RiderRemoveAllLineBreakpoints)
 vmap <leader>dd "+d
 nmap <leader>ff <action>(GotoFile)
 nmap <leader>fl <action>(SelectInProjectView)
+nmap <leader>fs <action>(FileStructurePopup)
+nmap <leader>fu <action>(FindUsages)
 nmap <leader>ft <action>(FindInPath)
 nmap <leader>fc <action>(GotoAction)
 nmap <leader>fm <action>(ReformatCode) \| <action>(OptimizeImports)
