@@ -231,6 +231,7 @@ let g:WhichKeyDesc_CodeAndClose_CloseAllEditorsButActive = "<leader>co 关闭其
 
 let g:WhichKeyDesc_DeBugOrDelete= "<leader>d 调试&删除"
 let g:WhichKeyDesc_DebugOrDelete_BreakPoint = "<leader>dp 打断点/解除断点 "
+let g:WhichKeyDesc_DebugOrDelete_RemoveAllBreakPoint = "<leader>dr 移除所有断点"
 let g:WhichKeyDesc_DebugOrDelete_DeBug = "<leader>db 调试"
 let g:WhichKeyDesc_DebugOrDelete_DeleteAndCopyToClipboard = "<leader>dd 删除并复制到剪切板"
 
