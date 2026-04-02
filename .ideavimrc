@@ -13,6 +13,9 @@ set multiple-cursors
 set nerdtree
 set argtextobj
 set easymotion
+set smartcase
+set matchit
+set idearefactormode=keep
 set textobj-indent
 set surround
 set commentary
@@ -70,6 +73,10 @@ nnoremap gh :<C-u>action Back<CR>
 nnoremap gl :<C-u>action Forward<CR>
 nnoremap gw :<C-u>action ShowHoverInfo<CR>
 
+nnoremap { :<C-u>action MethodUp<CR>
+nnoremap } :<C-u>action MethodDown<CR>
+vnoremap { :<C-u>action MethodUp<CR>
+vnoremap } :<C-u>action MethodDown<CR>
 nnoremap <C-]> :<C-u>action EditorCodeBlockEnd<CR>
 nnoremap <C-[> :<C-u>action EditorCodeBlockStart<CR>
 
@@ -203,6 +210,10 @@ nmap <leader><leader>f <action>(AceAction)
 
 "============================== which-key keymap ================================================
 let g:WhichKeyDesc_LeaderKeymap = "<leader> 🌟🌟🌟紫色为二级目录🌟🌟🌟"
+
+" ── 函数间跳转 ───────────────────────────────────────────────────────────
+let g:WhichKeyDesc_MethodUp   = "{ 跳转到上一个函数"
+let g:WhichKeyDesc_MethodDown = "} 跳转到下一个函数"
 
 " ── g prefix ──────────────────────────────────────────────────────────────
 let g:WhichKeyDesc_GotoAction         = "ga 跳转到操作"
