@@ -15,6 +15,10 @@ set argtextobj
 set easymotion
 set textobj-indent
 set surround
+set commentary
+set highlightedyank
+set ReplaceWithRegister
+set exchange
 "============================== Plugins settings ===============================================
 let g:argtextobj_pairs="[:],(:),<:>"
 let b:match_words = 
@@ -330,6 +334,20 @@ let g:WhichKeyDesc_easymotion_j    = "<leader><leader>j 跳转到行"
 let g:WhichKeyDesc_easymotion_b    = "<leader><leader>b 向前跳转到单词开头"
 let g:WhichKeyDesc_easymotion_w    = "<leader><leader>w 跳转到单词开头"
 let g:WhichKeyDesc_easymotion_e    = "<leader><leader>e 跳转到单词结尾"
+
+" ── commentary ──────────────────────────────────────────────────────────
+let g:WhichKeyDesc_commentary       = "gc 注释"
+let g:WhichKeyDesc_commentary_line  = "gcc 注释/取消注释当前行"
+let g:WhichKeyDesc_commentary_motion = "gc{motion} 注释指定范围（如 gcip 注释整段）"
+
+" ── ReplaceWithRegister ──────────────────────────────────────────────────
+let g:WhichKeyDesc_ReplaceWithRegister      = "gr 用寄存器内容替换"
+let g:WhichKeyDesc_ReplaceWithRegister_line = "grr 替换整行"
+
+" ── exchange ─────────────────────────────────────────────────────────────
+let g:WhichKeyDesc_exchange        = "cx 交换文本"
+let g:WhichKeyDesc_exchange_line   = "cxx 标记整行用于交换"
+let g:WhichKeyDesc_exchange_cancel = "cxc 取消交换标记"
 
 " ── textobj visual shortcuts ─────────────────────────────────────────────
 let g:WhichKeyDesc_VisualIndentInner        = "vii 选中块内部"
